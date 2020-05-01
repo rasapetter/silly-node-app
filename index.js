@@ -10,10 +10,7 @@ const getDogImageURLs = async () => {
   return dogUrls;
 };
 
-(async () => {
-  // Get a URL for a random image of a dog
-  const dogUrl = await getDogImageURLs();
-
+const printAsciifiedImage = async (dogUrl) => {
   // Download the image
   const { body: data } = await agent.get(dogUrl);
 
@@ -26,4 +23,14 @@ const getDogImageURLs = async () => {
 
   // Print the ascii
   console.log(ascii);
+}
+
+(async () => {
+  // Get a ${noOfImages} of URLs for a specific ${dogBreed}
+  const dogUrls = await getDogImageURLs();
+
+  // Access each dogUrl
+  dogUrls.forEach(dogUrl => {
+    printAsciifiedImage(dogUrl);
+  });
 })();
